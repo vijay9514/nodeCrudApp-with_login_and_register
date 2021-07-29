@@ -1,0 +1,23 @@
+<div class="info-wrrap">
+    <h4>{{ listing.title }}</h4>
+    <h5>Price: {{ listing.price }} | Locality: {{ listing.locality }}</h5>
+    <p>Details: {{ listing.details }}</p>
+
+    <button (click)="showEdit()" *ngIf="userService.loggedIn()">Edit</button>
+    <button class="btn-delete" (click)="removeListing()" *ngIf="userService.loggedIn()">Delete</button>
+  </div>
+
+  <div class="form-wrrap" *ngIf="showForm">
+    <h3>Edit  Listings</h3>
+    <form [formGroup]="editListingForm" (ngSubmit)="editListing()">
+        <input type="text" placeholder="Enter Title" formControlName="title" [ngModel]="listing.title">
+        <input type="text" placeholder="Enter Price" formControlName="price" [ngModel]="listing.price" >
+        
+        <input type="text" placeholder="Enter locality" formControlName="locality" [ngModel]="listing.locality">
+        <input type="text" placeholder="Enter details" formControlName="details" [ngModel]="listing.details">
+        
+
+       <input type="submit" value="Update" [disabled]="!editListingForm.valid">
+    </form>
+</div>
+  

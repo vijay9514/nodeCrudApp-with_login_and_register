@@ -1,0 +1,12 @@
+<nav>
+    <h1>prop Listing App</h1>
+    <div class="main-menu" style="display: flex;">
+        <span ><a routerLink="/listings" style="background-color: rebeccapurple;">All Listing</a></span>
+         <span *ngIf="!userService.loggedIn()"><a routerLink="user/login" style="background-color: red">Login</a></span>
+        <span *ngIf="!userService.loggedIn()">   <a routerLink="user/register" style="background-color: deeppink;">register</a> </span>
+        <span *ngIf="userService.loggedIn()"><a routerLink="listings/add-listing" style="background-color: red" >Add Listing</a></span>
+      <span *ngIf="userService.loggedIn()">
+          <a style="cursor: pointer;" (click)="userService.logout()">LogOut</a>
+      </span>
+    </div>
+</nav>
